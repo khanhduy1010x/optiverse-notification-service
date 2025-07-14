@@ -37,4 +37,16 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UserDto.prototype, "avatar_url", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Role of the user', example: 'user', required: false }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UserDto.prototype, "role", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Status of the user', example: 'active', required: false }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UserDto.prototype, "status", void 0);
 //# sourceMappingURL=user.dto.js.map

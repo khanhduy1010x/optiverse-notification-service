@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AxiosClientModule = void 0;
 const common_1 = require("@nestjs/common");
 const axios_client_1 = require("./axios-client");
+const user_http_client_1 = require("./user-http.client");
 let AxiosClientModule = class AxiosClientModule {
 };
 exports.AxiosClientModule = AxiosClientModule;
@@ -20,8 +21,9 @@ exports.AxiosClientModule = AxiosClientModule = __decorate([
                 provide: 'AXIOS_CLIENT',
                 useFactory: () => new axios_client_1.AxiosClient(''),
             },
+            user_http_client_1.UserHttpClient,
         ],
-        exports: ['AXIOS_CLIENT'],
+        exports: ['AXIOS_CLIENT', user_http_client_1.UserHttpClient],
     })
 ], AxiosClientModule);
 //# sourceMappingURL=axios-client.module.js.map

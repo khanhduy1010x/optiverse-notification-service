@@ -8,7 +8,7 @@ const axios_1 = __importDefault(require("axios"));
 class AxiosClient {
     constructor(baseUrl) {
         this.instance = axios_1.default.create({
-            timeout: 5000,
+            timeout: 20000,
             headers: { 'Content-Type': 'application/json' },
         });
         this.instance.defaults.baseURL = baseUrl;

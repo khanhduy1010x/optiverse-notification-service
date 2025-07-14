@@ -15,12 +15,17 @@ export class AuthMiddleware implements NestMiddleware {
       try {
         const userInfoJson = Buffer.from(userInfoBase64, 'base64').toString();
         console.log('Decoded userInfo:', userInfoJson);
+        console.log('loi o day ');
         const parsedUser = JSON.parse(userInfoJson);
+        console.log('loi o day 2');
         user = new UserDto();
         user.userId = parsedUser._id;
         user.email = parsedUser.email;
         user.fullName = parsedUser.full_name;
         user.avatar_url = parsedUser.avatar_url || undefined;
+        user.role = parsedUser.role;
+        user.status = parsedUser.status;
+        console.log('loi o day 3');
       } catch (error) {
         console.error('Error parsing X-User-Info:', error);
       }
@@ -30,6 +35,7 @@ export class AuthMiddleware implements NestMiddleware {
 
     const customReq = req as CustomRequest;
     customReq.userInfo = user;
+    console.log('loi o day 4');
     next();
   }
 }

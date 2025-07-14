@@ -3,4 +3,6 @@ export declare class UserDto {
     email: string;
     fullName?: string;
     avatar_url?: string;
+    role?: string;
+    status?: string;
 }
