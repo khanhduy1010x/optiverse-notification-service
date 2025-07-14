@@ -8,6 +8,8 @@ import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
 import { LoggerMiddleware } from './common/logger/logger.middleware';
 import { AxiosClientModule } from './http-axios/axios-client.module';
 import { NotificationModule } from './notifications/notification.module';
+import { NotificationSettingModule } from './setting-notify/notification-setting.module';
+import { EmailModule } from './email-service/email.module';
 
 @Module({
   imports: [
@@ -17,8 +19,9 @@ import { NotificationModule } from './notifications/notification.module';
     }),
     DatabaseModule,
     NotificationModule,
-AxiosClientModule
-    
+    NotificationSettingModule,
+    AxiosClientModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [

@@ -20,5 +20,13 @@ export class UserDto {
   @IsOptional()
   avatar_url?: string;
 
+  @ApiProperty({ description: 'Role of the user', example: 'user', required: false })
+  @IsString()
+  @IsOptional()
+  role?: string;
 
+  @ApiProperty({ description: 'Status of the user', example: 'active', required: false })
+  @IsString()
+  @IsOptional()
+  status?: string;
 }

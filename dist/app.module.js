@@ -17,6 +17,8 @@ const http_exception_filter_1 = require("./common/exceptions/http-exception.filt
 const logger_middleware_1 = require("./common/logger/logger.middleware");
 const axios_client_module_1 = require("./http-axios/axios-client.module");
 const notification_module_1 = require("./notifications/notification.module");
+const notification_setting_module_1 = require("./setting-notify/notification-setting.module");
+const email_module_1 = require("./email-service/email.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(logger_middleware_1.LoggerMiddleware).forRoutes('*');
@@ -32,7 +34,9 @@ exports.AppModule = AppModule = __decorate([
             }),
             database_module_1.DatabaseModule,
             notification_module_1.NotificationModule,
-            axios_client_module_1.AxiosClientModule
+            notification_setting_module_1.NotificationSettingModule,
+            axios_client_module_1.AxiosClientModule,
+            email_module_1.EmailModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [
