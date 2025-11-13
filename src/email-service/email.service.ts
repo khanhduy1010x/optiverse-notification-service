@@ -116,4 +116,53 @@ export class EmailService {
       },
     });
   }
+
+  /**
+   * Send task event reminder email with rich template
+   */
+  async sendTaskEventReminder(
+    to: string,
+    userId: string,
+    eventTitle: string,
+    startTime: string,
+    description?: string,
+    location?: string,
+    guests?: string,
+    actionUrl?: string,
+  ): Promise<boolean> {
+    try {
+      // Check if task notifications are enabled
+      const isEnabled = await this.notificationSettingService.isNotificationEnabled(
+        userId,
+        'task_notifications',
+      );
+
+      if (!isEnabled) {
+        return false;
+      }
+
+      const user = await this.userHttpClient.getUser(to);
+      const subject = `Reminder: Event "${eventTitle}" Starting Soon`;
+
+      return this.sendEmail({
+        to,
+        subject,
+        template: 'task-event-reminder',
+        context: {
+          subject,
+          eventTitle,
+          startTime,
+          description,
+          location,
+          guests,
+          actionUrl,
+          name: user.full_name,
+          year: new Date().getFullYear(),
+        },
+      });
+    } catch (error) {
+      console.error('Error sending task event reminder:', error);
+      return false;
+    }
+  }
 }
